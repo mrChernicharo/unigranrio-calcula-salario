@@ -3,20 +3,23 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Header from "./src/Header";
 import MoneyPerHour from "./src/MoneyPerHour";
+import Outcome from "./src/Outcome";
 import WorkedHours from "./src/WorkedHours";
 
 export default function App() {
   const [money, setMoney] = useState(16);
   const [hours, setHours] = useState(160);
+
+  const [IR, setIR] = useState(0);
+  const [INSS, setINSS] = useState(0);
+  const [syndicate, setSyndicate] = useState(0);
+
   const [liquidSalary, setLiquidSalary] = useState(0);
 
-  function handleIncrementMoney() {
-    console.log(money);
+  function incrementMoney() {
     setMoney(money + 1);
   }
   function decrementMoney() {
-    console.log(money);
-
     setMoney(money - 1);
   }
   function incrementHours() {
@@ -32,9 +35,9 @@ export default function App() {
 
   function calculateLiquidSalary() {
     const monthTotal = calculateGrossSalaty();
-    const IR = monthTotal * 0.11;
-    const INSS = monthTotal * 0.08;
-    const syndicate = monthTotal * 0.05;
+    setIR(monthTotal * 0.11);
+    setINSS(monthTotal * 0.08);
+    setSyndicate(monthTotal * 0.05);
     const totalDiscount = IR + INSS + syndicate;
 
     setLiquidSalary(monthTotal - totalDiscount);
@@ -45,13 +48,13 @@ export default function App() {
   }, [money, hours]);
 
   return (
-    <View style={styles.container}>
+    <View style={s.container}>
       <StatusBar style="light" animated translucent />
       <Header />
 
       <MoneyPerHour
         money={money}
-        incrementMoney={handleIncrementMoney}
+        incrementMoney={incrementMoney}
         decrementMoney={decrementMoney}
       />
 
@@ -61,14 +64,17 @@ export default function App() {
         decrementHours={decrementHours}
       />
 
-      <Text>{hours + " horas"}</Text>
-      <Text>{"R$ " + money + " por hora"}</Text>
-      <Text>{"R$ " + liquidSalary}</Text>
+      <Outcome
+        IR={IR}
+        INSS={INSS}
+        syndicate={syndicate}
+        liquidSalary={liquidSalary}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#c21414",

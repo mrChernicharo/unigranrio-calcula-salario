@@ -17,7 +17,9 @@ const MoneyPerHour = ({ money, incrementMoney, decrementMoney }: Props) => {
         <RectButton style={s.button} onPress={decrementMoney}>
           <Text style={s.buttonText}>-</Text>
         </RectButton>
-        <TextInput keyboardType="numeric" value={String(money)} />
+
+        <TextInput keyboardType="numeric" value={`R$ ${String(money)},00`} />
+
         <RectButton style={s.button} onPress={incrementMoney}>
           <Text style={s.buttonText}>+</Text>
         </RectButton>
@@ -30,11 +32,12 @@ export default MoneyPerHour;
 
 const s = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderColor: "#fff",
+    // borderWidth: 1,
+    // borderColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 30,
     paddingVertical: 10,
+    marginVertical: 10,
   },
   title: {
     fontSize: 24,

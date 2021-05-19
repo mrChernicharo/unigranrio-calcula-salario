@@ -18,7 +18,7 @@ const WorkedHours = ({ hours, decrementHours, incrementHours }: Props) => {
           <Text style={s.buttonText}>-</Text>
         </RectButton>
 
-        <TextInput keyboardType="numeric" value={String(hours)} />
+        <TextInput keyboardType="numeric" value={String(hours) + "h"} />
 
         <RectButton style={s.button} onPress={incrementHours}>
           <Text style={s.buttonText}>+</Text>
@@ -32,11 +32,12 @@ export default WorkedHours;
 
 const s = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderColor: "#fff",
+    // borderWidth: 1,
+    // borderColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 30,
     paddingVertical: 10,
+    marginBottom: 40,
   },
   title: {
     fontSize: 24,
