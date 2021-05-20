@@ -32,8 +32,6 @@ export default WorkedHours;
 
 const s = StyleSheet.create({
   container: {
-    // borderWidth: 1,
-    // borderColor: "#fff",
     alignItems: "center",
     paddingHorizontal: 30,
     paddingVertical: 10,

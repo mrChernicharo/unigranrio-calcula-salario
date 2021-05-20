@@ -55,12 +55,9 @@ const s = StyleSheet.create({
   },
 
   discountsContainer: {
-    // borderColor: "#fff",
-    // borderWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     width: 300,
-    // height: 200,
   },
   discountsTitle: {
     color: "#fff",
@@ -69,11 +66,8 @@ const s = StyleSheet.create({
     marginBottom: 10,
   },
   discountItemContainer: {
-    // borderColor: "#fff",
-    // borderWidth: 1,
     width: 100,
     alignItems: "center",
-    // height: 100,
   },
   discountItemTitle: {
     color: "#fff",
